@@ -1,61 +1,72 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-export default function BlowDetector({ onBlow }) {
-    const [isListening, setIsListening] = useState(false);
+interface BlowDetectorProps {
+  onBlow: () => void; // The function to be called when blowing is detected
+}
 
-    useEffect(() => {
-        let audioContext;
-        let analyser;
-        let dataArray;
+export default function BlowDetector({ onBlow }: BlowDetectorProps): JSX.Element {
+  const [isListening, setIsListening] = useState<boolean>(false);
 
-        const startListening = async () => {
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                const source = audioContext.createMediaStreamSource(stream);
-                analyser = audioContext.createAnalyser();
-                analyser.fftSize = 256;
-                dataArray = new Uint8Array(analyser.frequencyBinCount);
-                source.connect(analyser);
+  useEffect(() => {
+    let audioContext: AudioContext | null = null;
+    let analyser: AnalyserNode | null = null;
+    let dataArray: Uint8Array | null = null;
+    let animationFrameId: number | null = null;
 
-                const detectBlow = () => {
-                    analyser.getByteFrequencyData(dataArray);
-                    const volume = dataArray.reduce((a, b) => a + b, 0) / dataArray.length;
+    const initializeAudio = async (): Promise<void> => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const source = audioContext.createMediaStreamSource(stream);
+        analyser = audioContext.createAnalyser();
+        analyser.fftSize = 256;
+        dataArray = new Uint8Array(analyser.frequencyBinCount);
+        source.connect(analyser);
 
-                    if (volume > 50) { // Adjust sensitivity
-                        onBlow(); // Trigger the parent function
-                        stopListening();
-                    } else {
-                        requestAnimationFrame(detectBlow);
-                    }
-                };
+        detectBlow(); // Start detecting
+      } catch (error) {
+        console.error("Error accessing microphone:", error);
+        setIsListening(false); // Reset state in case of failure
+      }
+    };
 
-                detectBlow();
-            } catch (error) {
-                console.error('Error accessing microphone:', error);
-            }
-        };
+    const detectBlow = (): void => {
+      if (!analyser || !dataArray) return;
 
-        const stopListening = () => {
-            if (audioContext) {
-                audioContext.close();
-            }
-            setIsListening(false);
-        };
+      analyser.getByteFrequencyData(dataArray);
+      const volume = dataArray.reduce((a, b) => a + b, 0) / dataArray.length;
 
-        if (isListening) {
-            startListening();
-        }
+      if (volume > 130) {
+        onBlow(); // Trigger the parent function
+        stopListening();
+      } else {
+        animationFrameId = requestAnimationFrame(detectBlow);
+      }
+    };
 
-        return () => stopListening();
-    }, [isListening]);
+    const stopListening = (): void => {
+      if (audioContext) {
+        audioContext.close();
+      }
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+      setIsListening(false);
+    };
 
-    return (
-        <div>
-            {!isListening && (
-                <button onClick={() => setIsListening(true)}>Start Blowing!</button>
-            )}
-            {isListening && <p>Blow to open the cake! 🎂</p>}
-        </div>
-    );
+    if (isListening) {
+      initializeAudio();
+    }
+
+    return () => stopListening();
+  }, [isListening, onBlow]);
+
+  return (
+    <div>
+      {!isListening && (
+        <button onClick={() => setIsListening(true)}>Start Blowing!</button>
+      )}
+      {isListening && <p>Blow to open the cake! 🎂</p>}
+    </div>
+  );
 }

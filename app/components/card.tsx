@@ -1,32 +1,17 @@
-"use client";
+'use client';
+import "./style.css";
 import React from "react";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { cake, ketki } from "@/images/main";
-const confetti = require("canvas-confetti").default;
 
-export default function HeroSection() {
-  useEffect(() => {
-    const confettiScript = document.createElement("script");
-    confettiScript.src = "https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1";
-    confettiScript.async = true;
-    document.body.appendChild(confettiScript);
-
-    confettiScript.onload = () => {
-      confetti({
-        particleCount: 1000,
-        spread: 1500,
-        origin: { y: 0.45 },
-      });
-    };
-
-    return () => {
-      document.body.removeChild(confettiScript);
-    };
-  }, []);
+export default function Card() {
   return (
-    <section className="min-h-screen bg-gradient-to-br from-purple-500 via-pink-500 to-purple-500 flex items-center justify-center text-center p-6 space-y-1">
+    <section className="page">
+      <div className="birthdayCard">
+        <div className="cardFront">
+        <section className=" w-[670px] h-[1000px] flex items-center justify-center text-center space-y-1">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -37,9 +22,9 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-5xl -y-10 font-extrabold text-pink-600 mb-4 drop-shadow-md"
+          className="text-5xl -y-10 font-extrabold text-[#9E1B32] mb-4 drop-shadow-md"
         >
-          🎉 Happy Birthday! 🎂
+             Happy Birthday! 
         </motion.h1>
 
         <motion.span
@@ -48,19 +33,9 @@ export default function HeroSection() {
           transition={{ duration: 1.5 }}
           className="text-7xl text-[#9E1B32] font-extrabold"
         >
-          ❤️ Jaanu ❤️
+           KETKI 
         </motion.span>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 1 }}
-          className="text-gray-700 text-3xl mb-6" 
-        >
-          Wishing you a day that's as special as you are! May all your dreams
-          come true. 💖
-        </motion.p>
-
+        
         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -72,6 +47,7 @@ export default function HeroSection() {
             alt="Birthday Cake"
             height={400}
             className="rounded-full"
+            priority
           />
         </motion.div>
 
@@ -82,12 +58,31 @@ export default function HeroSection() {
             transition={{ delay: 1.5, duration: 0.5 }}
             whileHover={{ scale: 1.1 }}
             className="bg-pink-600 text-white px-8 py-3 rounded-full text-xl font-medium hover:bg-pink-500 transition transform hover:scale-105 shadow-lg"
-            onClick={() => alert("🎉 Have an amazing birthday! 🎉")}
+            // onClick={() => alert("🎉 Have an amazing birthday! 🎉")}
           >
             Click to Open Your Birthday Surprise 🎁
           </motion.button>
         </div>
       </motion.div>
+    </section>
+          {/* <div className="balloons">
+            <div className="balloonOne" />
+            <div className="balloonTwo" />
+            <div className="balloonThree" />
+            <div className="balloonFour" />
+            <div className="balloonFive" />
+            <div className="balloonSix" />
+            <div className="balloonSeven" />
+            <div className="balloonEight" />
+            <div className="balloonNine" />
+            <div className="balloonTen" />
+            <div className="balloonEleven" />
+          </div> */}
+        </div>
+        <div className="cardInside">
+        </div>
+      </div>
+      {/* <Balloon /> */}
     </section>
   );
 }
