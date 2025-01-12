@@ -77,9 +77,9 @@ const Cake = () => {
 
 const CakeWithCandles = () => {
   return (
-    <section id="cake" className="h-[100vh] pt-96">
+    <section id="cake" className="h-[100vh] pt-10">
     <div className="relative text-center">
-      <h1 className="text-white text-5xl font-black mb-2">Click on Flame to blow</h1>
+      <h1 className="text-white text-2xl font-black mb-20">Click on Flame to blow</h1>
       <Cake />
     </div>
     </section>

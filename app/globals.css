@@ -33,7 +33,7 @@
   background-image: linear-gradient(to bottom right, #a855f7, #ec4899, #a855f7);
 }
 
-#msg {
+/* #msg {
   position: fixed;
   margin: 0 auto;
   bottom: 10%;
@@ -48,7 +48,7 @@
   color: black;
   text-shadow: 0 0 20px black;
   opacity: 0.8;
-}
+} */
 
 #glow {
   position: absolute;
