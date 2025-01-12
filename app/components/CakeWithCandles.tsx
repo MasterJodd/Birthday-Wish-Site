@@ -1,41 +1,88 @@
-import { useState } from 'react';
+import React, { useState } from "react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-const CakeWithCandles = ({ isBlownOut }: { isBlownOut: boolean }) => {
+const Candles = () => {
+  const [isPuffed, setIsPuffed] = useState(false);
+
+const router = useRouter();
+
+  const handleFlameClick = () => {
+    setIsPuffed(true);
+    router.push("/card");
+  };
+
   return (
-    <svg
-      viewBox="0 0 200 200"
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      className="mx-auto"
+    <div
+      id="candle"
+      className="relative w-6 h-32 mx-auto opacity-100 scale-150"
     >
-      {/* Cake Base */}
-      <rect x="30" y="120" width="140" height="50" rx="10" ry="10" fill="#f2b3d7" />
-      {/* Cake Top */}
-      <rect x="50" y="100" width="100" height="20" rx="10" ry="10" fill="#f2b3d7" />
+      {/* Candle Body */}
+      <div className="absolute bottom-0 left-[8%] w-[84%] h-[80%] bg-gradient-to-b from-gray-100 to-dark-bg border border-gray-800 rounded-md" />
+      {/* Candle Top */}
+      <div id="top" className="absolute top-0 w-full h-8">
+        {/* Smoke */}
+        {[...Array(3)].map((_, index) => (
+          <div
+            key={index}
+            className={`absolute rounded-full bg-light-smoke ${
+              isPuffed ? "animate-puff-bubble" : "opacity-0"
+            }`}
+            style={{
+              bottom: `${index * 0.5 + 0.1}em`,
+              left:
+                index === 1 ? "50%" : index === 2 ? "20%" : "calc(50% - 0.5em)",
+              height: `${0.5 + index * 0.1}em`,
+              width: `${0.5 + index * 0.1}em`,
+            }}
+          ></div>
+        ))}
+        {/* Wick */}
+        <div className="absolute bottom-0 left-[calc(50%-0.05em)] w-[0.1em] h-2 bg-blue-900"></div>
+        {/* Flame */}
+        <div
+          id="flame"
+          className={`absolute w-6 h-8 rounded-full bg-flame-yellow cursor-pointer ${
+            isPuffed ? "animate-puff opacity-0" : "animate-burn"
+          }`}
+          style={{ bottom: "0.15em" }}
+          onClick={handleFlameClick}
+        >
+          <div
+            className={`absolute w-[1.5em] h-[1.8em] bg-flame-orange rounded-full ${
+              isPuffed ? "" : "animate-burnInner"
+            }`}
+            style={{ bottom: "10%", left: "calc(50% - 0.75em)" }}
+          ></div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-      {/* Candles */}
-      {[1, 2, 3].map((index) => (
-        <g key={index}>
-          {/* Candle Body */}
-          <rect
-            x={50 + (index - 1) * 40}
-            y="70"
-            width="10"
-            height="30"
-            fill="#f2b3d7"
-          />
-          {/* Candle Flame */}
-          <circle
-            cx={55 + (index - 1) * 40}
-            cy="60"
-            r={isBlownOut ? 0 : 5}
-            fill={isBlownOut ? "none" : "orange"}
-            className={`flame ${isBlownOut ? 'flame-blown-out' : 'flame-lit'}`}
-          />
-        </g>
-      ))}
-    </svg>
+const Cake = () => {
+  return (
+    <>
+      <Image
+        src="/cake.png"
+        alt="cake"
+        height={1000}
+        width={650}
+        className="mx-auto"
+      />
+      <Candles />
+    </>
+  );
+};
+
+const CakeWithCandles = () => {
+  return (
+    <section id="cake" className="h-[100vh] pt-96">
+    <div className="relative text-center">
+      <h1 className="text-white text-5xl font-black mb-2">Click on Flame to blow</h1>
+      <Cake />
+    </div>
+    </section>
   );
 };
 

@@ -1,12 +1,12 @@
-import Section2 from "./sections/section2";
-import HomePage from "./components/testpage";
-import Card from "./components/card";
+"use client";
+import React from "react";
+import CakeWithCandles from "./components/CakeWithCandles";
+
 export default function Home() {
   return (
     <>
       <main className="space-y-12 sm:space-y-24">
-        <Card />
-        <HomePage />
+        <CakeWithCandles />
       </main>
     </>
   );
