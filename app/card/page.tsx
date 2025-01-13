@@ -62,7 +62,7 @@ export default function Card() {
                   className="bg-pink-600 text-white px-3 text-sm py-3 font-extrabold rounded-full text hover:bg-pink-500 transition transform hover:scale-105 shadow-lg"
                   // onClick={() => alert("🎉 Have an amazing birthday! 🎉")}
                 >
-                  Touch here
+                  Tap here
                 </motion.button>
               </div>
             </motion.div>
@@ -78,7 +78,7 @@ export default function Card() {
               everything your heart desires. 💐✨ Have the best day ever, and
               keep shining like the star you are!
             </p>
-            <Link href="/please" className="px-6 py-2 bg-pink-200 text-gray-800 font-semibold rounded-md shadow-md hover:bg-gray-100">
+            <Link href="/envelope" className="px-6 py-2 bg-pink-200 text-gray-800 font-semibold rounded-md shadow-md hover:bg-gray-100">
             Tap Here
             </Link>
           </div>
