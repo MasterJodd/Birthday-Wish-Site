@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ketki } from "@/images/main";
 import Strips from "../components/strips";
+import Link from "next/link";
 
 export default function Card() {
   return (
@@ -61,7 +62,7 @@ export default function Card() {
                   className="bg-pink-600 text-white px-3 text-sm py-3 font-extrabold rounded-full text hover:bg-pink-500 transition transform hover:scale-105 shadow-lg"
                   // onClick={() => alert("🎉 Have an amazing birthday! 🎉")}
                 >
-                  Click to see special message 🎁
+                  Touch here
                 </motion.button>
               </div>
             </motion.div>
@@ -69,7 +70,7 @@ export default function Card() {
         </div>
         <div className="cardInside">
           <div className="happy">
-            <p className="text-xl px-2 pt-4" id="msg">
+            <p className="text-base px-2 pt-4 mb-12" id="msg">
               Happy Birthday to the most amazing person! 💖 I hope your day is
               as beautiful, special, and magical as you are. You deserve all the
               happiness, laughter, and love in the world today and always. May
@@ -77,6 +78,9 @@ export default function Card() {
               everything your heart desires. 💐✨ Have the best day ever, and
               keep shining like the star you are!
             </p>
+            <Link href="/please" className="px-6 py-2 bg-pink-200 text-gray-800 font-semibold rounded-md shadow-md hover:bg-gray-100">
+            Tap Here
+            </Link>
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ const router = useRouter();
 
   const handleFlameClick = () => {
     setIsPuffed(true);
-    router.push("/card");
+    router.push("/video");
   };
 
   return (
@@ -77,9 +77,9 @@ const Cake = () => {
 
 const CakeWithCandles = () => {
   return (
-    <section id="cake" className="h-[100vh] pt-10">
+    <section className="h-[100vh] bg-pink-200 pt-10">
     <div className="relative text-center">
-      <h1 className="text-white text-2xl font-black mb-20">Click on Flame to blow</h1>
+      <h1 className="text-gray-800 text-2xl font-black mb-20">Click on Flame to blow</h1>
       <Cake />
     </div>
     </section>

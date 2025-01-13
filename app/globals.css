@@ -29,26 +29,6 @@
   margin: 0;
 }
 
-#cake {
-  background-image: linear-gradient(to bottom right, #a855f7, #ec4899, #a855f7);
-}
-
-/* #msg {
-  position: fixed;
-  margin: 0 auto;
-  bottom: 10%;
-  left: 0;
-  right: 0;
-  width: 12em;
-  text-align: center;
-  font-size: 2em;
-  font-weight: 100;
-  font-family: "";
-  letter-spacing: 0.1em;
-  color: black;
-  text-shadow: 0 0 20px black;
-  opacity: 0.8;
-} */
 
 #glow {
   position: absolute;
