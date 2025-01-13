@@ -16,7 +16,7 @@ export default function LovePrompt() {
         </div>
         <h1 className="text-2xl font-bold mb-2">DO you love me? 🥰</h1>
         <p className="text-gray-700 italic mb-6">
-          ~I'm all yours, Main sirf apka hun
+          ~Im all yours, Main sirf apka hun
         </p>
         <div className="flex gap-4 justify-center">
           <Link href="/yes" className="px-6 py-2 bg-white text-gray-800 font-semibold rounded-md shadow-md hover:bg-gray-100">
