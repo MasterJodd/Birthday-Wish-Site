@@ -9,22 +9,22 @@ import Link from "next/link";
 
 export default function Card() {
   return (
-    <section className="page">
+    <section className="page bg-pink-200">
       <Strips />
       <div className="birthdayCard">
-        <div className="cardFront">
-          <section className=" w-[300px] h-[500px] flex items-center justify-center text-center space-y-1">
+        <div className="cardFront ">
+          <section className=" w-[300px] h-[500px]  flex items-center justify-center text-center space-y-1">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1 }}
-              className="bg-white px-7 h-[70vh] shadow-2xl space-y-10 max-w-2xl w-full"
+              className=" front px-7 h-[70vh] shadow-2xl space-y-10 max-w-2xl w-full"
             >
               <motion.h1
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
-                className="text-2xl -y-10 mt-10 font-extrabold text-[#9E1B32] mb-4 drop-shadow-md"
+                className="text-2xl -y-10 mt-10 font-extrabold text-pink-200 mb-4 drop-shadow-md"
               >
                 Happy Birthday!
               </motion.h1>
@@ -33,7 +33,7 @@ export default function Card() {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 1.5 }}
-                className="text-3xl text-[#9E1B32] font-extrabold"
+                className="text-3xl text-pink-200 font-extrabold"
               >
                 JAANU
               </motion.span>
@@ -59,7 +59,7 @@ export default function Card() {
                   animate={{ scale: 1 }}
                   transition={{ delay: 1.5, duration: 0.5 }}
                   whileHover={{ scale: 1.1 }}
-                  className="bg-pink-600 text-white px-3 text-sm py-3 font-extrabold rounded-full text hover:bg-pink-500 transition transform hover:scale-105 shadow-lg"
+                  className="bg-pink-200 text-gray-500 px-3 text-sm py-3 font-extrabold rounded-full text hover:bg-pink-500 transition transform hover:scale-105 shadow-lg"
                   // onClick={() => alert("🎉 Have an amazing birthday! 🎉")}
                 >
                   Tap here
@@ -70,15 +70,10 @@ export default function Card() {
         </div>
         <div className="cardInside">
           <div className="happy">
-            <p className="text-base px-2 pt-4 mb-12" id="msg">
-              Happy Birthday to the most amazing person! 💖 I hope your day is
-              as beautiful, special, and magical as you are. You deserve all the
-              happiness, laughter, and love in the world today and always. May
-              this year bring you endless joy, unforgettable memories, and
-              everything your heart desires. 💐✨ Have the best day ever, and
-              keep shining like the star you are!
+            <p className="text-base px-2 pt-4 mb-10" id="msg">
+            Happy Birthday to the most amazing person! 💖 I hope your day is as beautiful, special, and magical as you are. You deserve all the happiness, laughter, and love in the world today and always. May this year bring you endless joy, unforgettable memories, and everything your heart desires. 💐✨ Have the best day ever, and keep shining like the star you are!
             </p>
-            <Link href="/envelope" className="px-6 py-2 bg-pink-200 text-gray-800 font-semibold rounded-md shadow-md hover:bg-gray-100">
+            <Link href="/open" className="px-6 py-2 bg-pink-200 text-gray-800 font-semibold rounded-md shadow-md hover:bg-gray-100">
             Tap Here
             </Link>
           </div>

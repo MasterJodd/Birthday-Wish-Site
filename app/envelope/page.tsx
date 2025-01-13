@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import "./style.css";
+import Link from "next/link";
 
 export default function Envelope() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +11,7 @@ export default function Envelope() {
   };
 
   return (
-    <div className="container flex items-center justify-center min-h-screen">
+    <div className="container bg-pink-200 flex items-center justify-center min-h-screen">
       <div
         className={`envelope-wrapper ${isOpen ? "flap" : ""}`}
         onClick={toggleEnvelope}
@@ -20,18 +21,11 @@ export default function Envelope() {
           {/* Letter */}
           <div className={`letter ${isOpen ? "open" : ""}`}>
             <div className="text">
-              <strong>Hello 🎀❤</strong>
+              <strong>Happy birthday Kittu 🎀❤</strong>
               <p>
-                मैं तुमसे प्यार करता हूं, पर सिर्फ इसलिए नहीं ,बदले मैं तुम भी
-                मुझसे प्यार करो, मैं सिर्फ तुमसे प्यार करता हूं इस्लीये लिखा है
-                🙃🙂 ❤🎀कि मुझे बातों से अच्छे तुम्हारे इशारे लगते हैं बिना गजरो
-                के भी बाल तुम्हारे प्यारे लगते हैं लगता होगा सारे जमाने को चांद
-                खूबसूरत लगता होगा सारे जमाने को चांद खूबसूरत मुझे चांद से अच्छे
-                सितारे लगते हैं अपनी मोहब्बत हासिल कर लेने वालों से कहीं ज्यादा
-                एक तरफ चा चा रखने वाले प्यारे लगते हैं और कर्ता रहता है सारा
-                जहां सकरों के सुंदरता की बात मुझे इस जहां में सबसे सुंदर कदम
-                तुम्हारे लगते हैं दूर कितना भी क्यों ना रह लूं मैं तुमसे पता
-                नहीं क्यों सबको हम तुम्हारे लगते हैं❤🎀❤
+                To the one who lights up my life each day, Happy Birthday, love,
+                in every way. May your dreams soar high, your heart stay true,
+                Forever and always, I cherish you. ❤️
               </p>
             </div>
           </div>
@@ -39,6 +33,12 @@ export default function Envelope() {
         {/* Heart Decoration */}
         <div className="heart"></div>
       </div>
+      <Link
+        href="/please"
+        className="px-6 py-2 bg-pink-400 text-gray-800 font-semibold rounded-md shadow-md hover:bg-gray-100"
+      >
+        Tap Here
+      </Link>
     </div>
   );
 }

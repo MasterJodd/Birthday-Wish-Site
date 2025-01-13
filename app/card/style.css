@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-image: linear-gradient(to bottom right, #a855f7, #ec4899, #a855f7);
 }
 
 .birthdayCard {
@@ -26,13 +25,16 @@
   transform: rotateY(-160deg);
 }
 
+.front{
+  background-image: url("/bg.jpg");
+}
 /* .birthdayCard:hover .happy {
   visibility: hidden;
 } */
 
 .cardFront {
   position: relative;
-  background-color: #fff;
+  background-image: url("/bg.jpg");
   width: 300px;
   height: 500px;
   overflow: hidden;

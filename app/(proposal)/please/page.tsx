@@ -14,7 +14,7 @@ export default function LovePrompt() {
             className="bg-white rounded-3xl"
           />
         </div>
-        <h1 className="text-2xl font-bold mb-2">DO you love me? 🥰</h1>
+        <h1 className="text-2xl font-bold mb-2">Will you marry me ? 🥰</h1>
         <p className="text-gray-700 italic mb-6">
           ~Im all yours, Main sirf apka hun
         </p>
